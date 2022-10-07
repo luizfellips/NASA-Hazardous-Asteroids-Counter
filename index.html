@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!--CSS Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+
+    <!--Javascript bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--bootstrap icons-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <script src="_js/jquery-3.6.1.js"></script>
+    <script src="_js/script.js"></script>
+    <link rel="stylesheet" href="_css/style.css" />
+    <title>Data NASA Analyser</title>
+  </head>
+  <body>
+    <div class="container main text-center">
+      <h1>NASA Asteroid Data Feed</h1>
+
+      <div class="container form-group general" id="main">
+        <h2>Query Data</h2>
+        <form id="queryForm" method="GET">
+          <h3 class="mt-4">Start Date</h3>
+          <input
+            class="form-control mt-4"
+            type="date"
+            name="first-date"
+            id="first-date"
+          />
+          <h3 class="mt-4">End Date</h3>
+          <input
+            class="form-control mt-4"
+            type="date"
+            name="second-date"
+            id="second-date"
+          />
+          <button class="btn mt-4" type="submit">SUBMIT</button>
+        </form>
+      </div>
+      <div class="container general" id="loading">
+        <h2>Loading request...</h2>
+      </div>
+    <div class="container general" id="informations">
+      <h2>Results</h2>
+      <h3 class="mt-4">Potentially Hazardous Asteroids</h3>
+      <h4 id="hazardous_asteroids"></h4>
+    </div>
+    <div class="container general" id="failed">
+        <h2 class="px-5">Failed! The max length between dates is 1 week.</h2>
+    </div>
+    <button class="btn mt-4" id="reload">RELOAD</button>
+    </div>
+  </body>
+  
+  <script>
+    $(document).ready(function () {
+      $("#informations").hide();
+      $("#loading").hide();
+      $("#failed").hide();
+      $("#reload").hide();
+      $("#queryForm").submit(function (e) {
+        e.preventDefault();
+        var start_date = $("#first-date").val();
+        var end_date = $("#second-date").val();
+        const api_key = "pS225dMLScfHR4FuCXcrd1ydfDVzyIasJZHgmvKL";
+        $("#main").fadeOut(2);
+        $("#loading").fadeIn();
+        $.ajax({
+          type: "GET",
+          url: `https://api.nasa.gov/neo/rest/v1/feed?start_date=${start_date}&end_date=${end_date}&api_key=${api_key}`,
+          success: function (data) {
+            var hazard_asteroids = getHazardousAsteroids(data['near_earth_objects']);
+            $("#loading").fadeOut(2);
+            setTimeout(function(){
+                $("#informations").fadeIn();
+            },4)
+            setTimeout(function(){
+                $("#reload").fadeIn();
+
+            },1000);
+            $("#reload").click(function(){
+                location.reload();
+            })
+
+
+            $("#hazardous_asteroids").text(hazard_asteroids);
+          },
+          error: function(data){
+            if(data['status'] === 400){
+                $("#loading").fadeOut(2);
+                setTimeout(function(){
+                $("#failed").fadeIn();
+            },1)
+            setTimeout(function(){
+                $("#reload").fadeIn();
+
+            },1000);
+            $("#reload").click(function(){
+                location.reload();
+            })
+            };
+          }
+        });
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,55 @@
+*{
+    font-family: 'Lato',sans-serif;
+}
+
+body {
+    background-image: url('../_media/space-gif-15.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container.main{
+    color: white;
+    margin-top: 6em;
+}
+
+.container.main h1{
+    text-shadow: 0px 2px 8px  rgb(0, 255, 242);
+
+}
+
+.general{
+    text-shadow: 0px 2px 8px  rgb(0, 255, 242);
+    background-color: #3333568e;
+    box-shadow: 0px 0px 10px 4px rgb(171, 195, 253);
+    width: 50%;
+    padding: 10px;
+    margin-top: 2em;
+    border-radius: 50px;
+}
+
+.form-control{
+    box-shadow: 0px 0px 7px 2px rgba(150,180,255,1);
+    border-radius: 10px;
+    background-color: #4a4a79b7;
+    color:white;
+}
+
+.btn{
+    text-shadow: 0px 2px 8px  rgb(0, 255, 242);
+    box-shadow: 0px 0px 5px 2px rgb(208, 221, 255);
+    font-size:1.2em;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background: rgba(81, 97, 150, 0.692);
+    color: white;
+    transition: 0.5s;
+}
+
+.btn:hover{
+    transform: scale(1.2);
+    box-shadow: 0px 0px 5px 4px rgb(208, 221, 255);
+}
+
