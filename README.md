@@ -10,8 +10,8 @@ also HTML building and CSS techniques.
 <table>
 <th colspan=2>App Images</th>
 <tr>
-<td><img src="https://user-images.githubusercontent.com/110192027/194601743-49937adb-1779-4d0a-8793-6298a878662a.png" width=500px></td>
-<td><img src="https://user-images.githubusercontent.com/110192027/194602159-ac806b33-c735-4b11-9e89-5d30b8fe53f6.png" width=500px></td>
+<td><img src="https://user-images.githubusercontent.com/110192027/194601743-49937adb-1779-4d0a-8793-6298a878662a.png" ></td>
+<td><img src="https://user-images.githubusercontent.com/110192027/194602159-ac806b33-c735-4b11-9e89-5d30b8fe53f6.png" x></td>
 </tr>
 </table>
 
