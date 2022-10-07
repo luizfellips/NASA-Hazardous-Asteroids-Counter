@@ -1,6 +1,7 @@
 # NASA Hazardous Asteroids Counter
 I developed this simple app to exercise API consuming, data interpretation with Javascript and asynchronous requests, 
 also HTML building and CSS techniques.
+https://luizfellips.github.io/NASA-Hazardous-Asteroids-Counter/
 ### Technologies Used
 - jQuery
 - Javascript
