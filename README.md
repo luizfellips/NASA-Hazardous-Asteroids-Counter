@@ -2,7 +2,7 @@
 I developed this simple app to exercise API consuming, data interpretation with Javascript and asynchronous requests, 
 also HTML building and CSS techniques.
 https://luizfellips.github.io/NASA-Hazardous-Asteroids-Counter/
-It counts the number of hazardous asteroid between a date and another, within the limit of 1 week.
+## It counts the number of hazardous asteroid between a date and another, within the limit of 1 week.
 ### Technologies Used
 - jQuery
 - Javascript
